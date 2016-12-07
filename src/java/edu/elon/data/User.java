@@ -8,12 +8,14 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String book;
+    private String dueDate;
 
     public User() {
         email = "";
         firstName = "";
         lastName = "";
         book = "";
+        dueDate = "";
     }
 
     public User(String firstName, String lastName, String email,String book) {
@@ -21,6 +23,7 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.book = book; 
+        
     }
 
     public String getEmail() {
@@ -51,5 +54,11 @@ public class User implements Serializable {
     }
     public void setBook(String book){
         this.book = book;
+    }
+    public void setDueDate(String dueDate){
+        this.dueDate = dueDate;
+    }
+    public String getDueDate(){
+        return dueDate;
     }
 }

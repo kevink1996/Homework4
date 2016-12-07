@@ -4,10 +4,12 @@
 <c:import url="includes/header.html" />
 
 <div class ="menu">
-    <a href="CheckoutBook.jsp"><strong>Check out a book</strong></a>
-    <br>
-    <a href=""><strong>Manage checked out books</strong></a>
+    <p>
+        Thank you for your patronage of the Belk Library. You've successfully 
+    checked out the book, ${user.book}. Please note that this book is due
+    back on ${user.dueDate}. A friendly reminder will be sent to you if your 
+    book becomes overdue.
+    </p>
 </div>
 <br>
 <c:import url="includes/footer.jsp" />
-

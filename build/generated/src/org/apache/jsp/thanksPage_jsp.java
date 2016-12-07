@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class CheckoutBook_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class thanksPage_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -51,35 +51,26 @@ public final class CheckoutBook_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("<!DOCTYPE html>\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       if (_jspx_meth_c_import_0(_jspx_page_context))
         return;
       out.write("\n");
+      out.write("\n");
       out.write("<div class =\"menu\">\n");
-      out.write("    <h2>Checkout a book</h2>\n");
-      out.write("    <br>\n");
-      out.write("    <form action=\"library\" method=\"post\">\n");
-      out.write("    <input type=\"hidden\" name=\"action\" value=\"checkout\">   \n");
-      out.write("    <label>First Name:</label>\n");
-      out.write("    <input type=\"text\" name=\"fName\" required>\n");
-      out.write("    <br>\n");
-      out.write("    <label>Last Name:</label>\n");
-      out.write("    <input type=\"text\" name=\"lName\" required>\n");
-      out.write("    <br>\n");
-      out.write("    <label>Email Address:</label>\n");
-      out.write("    <input type=\"email\" name=\"email\" required>\n");
-      out.write("    <br>\n");
-      out.write("    <label>Book Title:</label>\n");
-      out.write("    <input type=\"text\" name=\"book\" required>\n");
-      out.write("    <br>\n");
-      out.write("    <label></label>\n");
-      out.write("    <input class=\"button\" type=\"submit\" value=\"Checkout\">\n");
-      out.write("  </form>\n");
+      out.write("    <p>\n");
+      out.write("        Thank you for your patronage of the Belk Library. You've successfully \n");
+      out.write("    checked out the book, ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.book}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(". Please note that this book is due\n");
+      out.write("    back on ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.dueDate}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(". A friendly reminder will be sent to you if your \n");
+      out.write("    book becomes overdue.\n");
+      out.write("    </p>\n");
       out.write("</div>\n");
       out.write("<br>\n");
-      out.write("\n");
       if (_jspx_meth_c_import_1(_jspx_page_context))
         return;
       out.write('\n');

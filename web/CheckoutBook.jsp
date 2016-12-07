@@ -6,7 +6,7 @@
     <h2>Checkout a book</h2>
     <br>
     <form action="library" method="post">
-    <input type="hidden" name="action" value="checkout">   
+    <input type="hidden" name="action" value="Checkout">   
     <label>First Name:</label>
     <input type="text" name="fName" required>
     <br>

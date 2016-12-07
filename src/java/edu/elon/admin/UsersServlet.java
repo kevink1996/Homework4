@@ -6,8 +6,9 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import murach.data.UserDB;
-import org.apache.tomcat.jni.User;
+import edu.elon.users.UserDB;
+import edu.elon.data.User;
+
 
 public class UsersServlet extends HttpServlet {
 
@@ -23,9 +24,12 @@ public class UsersServlet extends HttpServlet {
         // get current action
         String action = request.getParameter("action");
         if (action == null) {
-            action = "nullness";  // default action
+            action = "join";  // default action
         }
-        
+        System.out.println(action);
+        if(action.equals("join")){
+            url = "/index.jsp";
+        }
         // perform action and set URL to appropriate page
         if (action.equals("display_users")) {            
             // get list of users
@@ -40,15 +44,20 @@ public class UsersServlet extends HttpServlet {
             String book = request.getParameter("book");
             
             GregorianCalendar cal = new GregorianCalendar();
-			cal.add(Calendar.MINUTE, 20160);
-			Date date = cal.getTime();
-			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			SimpleDateFormat sdf = new SimpleDateFormat(
-							"MM-dd-yyyy");
-			String formattedDate = sdf.format(sqlDate);
-                        
+	    cal.add(Calendar.MINUTE, 20160);
+	    Date date = cal.getTime();
+	    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+	    SimpleDateFormat simple = new SimpleDateFormat("MM-dd-yyyy");
+	    String finalDate = simple.format(sqlDate);
+                        System.out.println("PLESE WORK");
             User user = new User();
-            user.setFirstName(); 
+            user.setFirstName(first); 
+            user.setLastName(last);
+            user.setBook(book);
+            user.setEmail(email);
+            user.setDueDate(finalDate);
+            UserDB.insert(user);
+            url = "/thanksPage.jsp";
         }
         else if (action.equals("update_user")) {
             // get parameters from the request

@@ -4,7 +4,7 @@
 <c:import url="includes/header.html" />
 
 <div class ="menu">
-    <a href=""><strong>Check out a book</strong></a>
+    <a href="CheckoutBook.jsp"><strong>Check out a book</strong></a>
     <br>
     <a href=""><strong>Manage checked out books</strong></a>
 </div>

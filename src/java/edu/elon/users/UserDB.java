@@ -3,23 +3,26 @@ package edu.elon.users;
 import java.sql.*;
 import java.util.ArrayList;
 
-import murach.business.User;
+import edu.elon.data.User;
 
 public class UserDB {
 
     public static int insert(User user) {
         ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
+        Connection connection;
+        connection = pool.getConnection();
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO User (Email, FirstName, LastName) "
-                + "VALUES (?, ?, ?)";
+                = "INSERT INTO chriskev.`Library` (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`)  "
+                + "VALUES (NULL, ?, ?, ?, ?, ?, 0)";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getFirstName());
-            ps.setString(3, user.getLastName());
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getBook());
+            ps.setString(5, user.getDueDate());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -35,7 +38,7 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "UPDATE User SET "
+        String query = "UPDATE Library SET "
                 + "FirstName = ?, "
                 + "LastName = ? "
                 + "WHERE Email = ?";
@@ -60,7 +63,7 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "DELETE FROM User "
+        String query = "DELETE FROM Library "
                 + "WHERE Email = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -82,7 +85,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT Email FROM User "
+        String query = "SELECT Email FROM Library "
                 + "WHERE Email = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -105,7 +108,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT * FROM User "
+        String query = "SELECT * FROM Library "
                 + "WHERE Email = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -135,7 +138,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String query = "SELECT * FROM User";
+        String query = "SELECT * FROM Library";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();

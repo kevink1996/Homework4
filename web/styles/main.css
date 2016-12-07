@@ -26,3 +26,11 @@ footer{
     border-top: .2em solid blue;
     text-align: center;
 }
+
+form label{
+    text-align: left;
+}
+
+form input{
+    
+}
