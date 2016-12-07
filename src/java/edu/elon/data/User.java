@@ -18,11 +18,12 @@ public class User implements Serializable {
         dueDate = "";
     }
 
-    public User(String firstName, String lastName, String email,String book) {
+    public User(String firstName, String lastName, String email,String book,String dueDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.book = book; 
+        this.dueDate = dueDate;
         
     }
 

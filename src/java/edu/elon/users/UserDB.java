@@ -14,10 +14,11 @@ public class UserDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO chriskev.`Library` (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`)  "
+                = "INSERT INTO chriskev.library (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`) "
                 + "VALUES (NULL, ?, ?, ?, ?, ?, 0)";
         try {
             ps = connection.prepareStatement(query);
+            System.out.println("AHHHHHHH" + user.getFirstName());
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());

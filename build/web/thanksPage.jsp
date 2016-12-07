@@ -6,8 +6,8 @@
 <div class ="menu">
     <p>
         Thank you for your patronage of the Belk Library. You've successfully 
-    checked out the book, ${user.book}. Please note that this book is due
-    back on ${user.dueDate}. A friendly reminder will be sent to you if your 
+    checked out the book, ${User.book}. Please note that this book is due
+    back on ${User.dueDate}. A friendly reminder will be sent to you if your 
     book becomes overdue.
     </p>
 </div>
