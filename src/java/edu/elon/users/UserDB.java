@@ -17,7 +17,6 @@ public class UserDB {
                 + "VALUES (NULL, ?, ?, ?, ?, ?, 0)";
         try {
             ps = connection.prepareStatement(query);
-            System.out.println("AHHHHHHH" + user.getFirstName());
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());
@@ -108,8 +107,8 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT * FROM Library "
-                + "WHERE Email = ?";
+        String query = "SELECT * FROM Belk.Library "
+                + "WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -117,9 +116,11 @@ public class UserDB {
             User user = null;
             if (rs.next()) {
                 user = new User();
-                user.setFirstName(rs.getString("FirstName"));
-                user.setLastName(rs.getString("LastName"));
-                user.setEmail(rs.getString("Email"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setEmail(rs.getString("email"));
+                user.setBook(rs.getString("book"));
+                user.setDueDate(rs.getString("dueDate"));
             }
             return user;
         } catch (SQLException e) {
@@ -138,17 +139,19 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String query = "SELECT * FROM Library";
+        String query = "SELECT * FROM Belk.Library";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
-            ArrayList<User> users = new ArrayList<User>();
+            ArrayList<User> users = new ArrayList<>();
             while (rs.next())
             {
                 User user = new User();
-                user.setFirstName(rs.getString("FirstName"));
-                user.setLastName(rs.getString("LastName"));
-                user.setEmail(rs.getString("Email"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setEmail(rs.getString("email"));
+                user.setBook(rs.getString("book"));
+                user.setDueDate(rs.getString("dueDate"));
                 users.add(user);
             }
             return users;

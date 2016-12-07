@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 
 import edu.elon.users.UserDB;
 import edu.elon.data.User;
+import javax.websocket.Session;
 
 
 public class UsersServlet extends HttpServlet {
@@ -36,10 +37,14 @@ public class UsersServlet extends HttpServlet {
             ArrayList<User> users = UserDB.selectUsers();            
             request.setAttribute("users", users);
             url = "/Manage.jsp";
-        } 
+        }
+        else if (action.equals("startCheckout")){
+            url = "/CheckoutBook.jsp";
+            
+        }
         else if (action.equals("Checkout")) {
-            String first = request.getParameter("fName");
-            String last = request.getParameter("lName");
+            String first = request.getParameter("firstName");
+            String last = request.getParameter("lastName");
             String email = request.getParameter("email");
             String book = request.getParameter("book");
             
@@ -49,7 +54,6 @@ public class UsersServlet extends HttpServlet {
 	    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 	    SimpleDateFormat simple = new SimpleDateFormat("MM-dd-yyyy");
 	    String finalDate = simple.format(sqlDate);
-                        System.out.println("PLESE WORK");
             User user = new User(first, last, email, book, finalDate);
 //            user.setFirstName(first); 
 //            user.setLastName(last);
@@ -57,22 +61,8 @@ public class UsersServlet extends HttpServlet {
 //            user.setEmail(email);
 //            user.setDueDate(finalDate);
             UserDB.insert(user);
+            session.setAttribute("user", user);
             url = "/thanksPage.jsp";
-        }
-        else if (action.equals("update_user")) {
-            // get parameters from the request
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-
-            // get and update user
-            User user = (User) session.getAttribute("user");        
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            UserDB.update(user);
-
-            // get and set updated users
-            ArrayList<User> users = UserDB.selectUsers();            
-            request.setAttribute("users", users);            
         }
         else if (action.equals("delete_user")) {
             // get the user
