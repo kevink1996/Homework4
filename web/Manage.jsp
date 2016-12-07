@@ -21,7 +21,7 @@
 	  <td>${user.book}</td>
 	  <td>${user.dueDate}</td> 
           <td>${user.overDue}</td>
-	  <td><a class="check" href="library?action=delete_user&amp;email=${user.email}">Check in</a></td>
+          <td><button class="check" ><a href="library?action=delete_user&amp;email=${user.email}">Check in</a></button></td>
 	</tr>
       </c:forEach>
 	</table>

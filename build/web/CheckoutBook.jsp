@@ -8,10 +8,10 @@
     <form action="library" method="post">
     <input type="hidden" name="action" value="Checkout">   
     <label>First Name:</label>
-    <input type="text" name="fName" required>
+    <input type="text" name="firstName" required>
     <br>
     <label>Last Name:</label>
-    <input type="text" name="lName" required>
+    <input type="text" name="lastName" required>
     <br>
     <label>Email Address:</label>
     <input type="email" name="email" required>

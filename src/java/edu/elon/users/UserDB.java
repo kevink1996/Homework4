@@ -23,7 +23,7 @@ public class UserDB {
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getBook());
-            ps.setString(5, user.getDueDate());
+            ps.setDate(5, user.getFinalDate());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -153,7 +153,7 @@ public class UserDB {
                 user.setLastName(rs.getString("lastname"));
                 user.setEmail(rs.getString("email"));
                 user.setBook(rs.getString("book"));
-                user.setDueDate(rs.getString("dueDate"));
+                user.setDueDate(rs.getString("due"));
                 users.add(user);
             }
             return users;

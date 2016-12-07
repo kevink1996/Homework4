@@ -22,6 +22,7 @@ public class User implements Serializable {
         lastName = "";
         book = "";
         dueDate = "";
+        overDue="";
     }
 
     public User(String firstName, String lastName, String email,String book,String dueDate,GregorianCalendar cal) {
@@ -36,7 +37,7 @@ public class User implements Serializable {
     public GregorianCalendar getCal(){
         return cal;
     }
-    public void setCal(){
+    public void setCal(GregorianCalendar cal){
         this.cal = cal;
     }
     public String getEmail() {
@@ -78,12 +79,22 @@ public class User implements Serializable {
         this.overDue = overDue;
     }
     public String getOverDue(){
-        String finalDue = " ";
-            Calendar now = new GregorianCalendar();
-            if(now.compareTo(cal) ==0){
-                finalDue = "overdue";
+        overDue = " ";
+            GregorianCalendar cal = new GregorianCalendar();
+	    java.util.Date date = cal.getTime();
+	    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+	    SimpleDateFormat simple = new SimpleDateFormat("MM-dd-yyyy");
+	    String finalDate = simple.format(sqlDate);
+            if(finalDate.equals(dueDate))
+            {
+                overDue = "overdue";
             }
-		overDue= finalDue;
-		return finalDue;
+            return overDue;
+    }
+    public Date getFinalDate(){
+        java.util.Date date = cal.getTime();
+	    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+	    return sqlDate;
+        
     }
 }

@@ -39,3 +39,11 @@ label{
 #book{
     width: 30%;
 }
+
+table{
+    width: 100%;
+}
+
+th, td{
+    text-align: left;
+}
