@@ -6,7 +6,7 @@
 <div class ="menu">
     <a href="CheckoutBook.jsp"><strong>Check out a book</strong></a>
     <br>
-    <a href=""><strong>Manage checked out books</strong></a>
+    <a href="library?action=display_users"><strong>Manage checked out books</strong></a>
 </div>
 <br>
 <c:import url="includes/footer.jsp" />

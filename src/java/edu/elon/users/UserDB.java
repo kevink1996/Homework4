@@ -2,7 +2,6 @@ package edu.elon.users;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import edu.elon.data.User;
 
 public class UserDB {
@@ -14,7 +13,7 @@ public class UserDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO chriskev.library (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`) "
+                = "INSERT INTO Belk.Library (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`) "
                 + "VALUES (NULL, ?, ?, ?, ?, ?, 0)";
         try {
             ps = connection.prepareStatement(query);

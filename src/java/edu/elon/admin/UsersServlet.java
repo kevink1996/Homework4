@@ -35,7 +35,7 @@ public class UsersServlet extends HttpServlet {
             // get list of users
             ArrayList<User> users = UserDB.selectUsers();            
             request.setAttribute("users", users);
-            url = "/manage.jsp";
+            url = "/Manage.jsp";
         } 
         else if (action.equals("Checkout")) {
             String first = request.getParameter("fName");
@@ -50,12 +50,12 @@ public class UsersServlet extends HttpServlet {
 	    SimpleDateFormat simple = new SimpleDateFormat("MM-dd-yyyy");
 	    String finalDate = simple.format(sqlDate);
                         System.out.println("PLESE WORK");
-            User user = new User();
-            user.setFirstName(first); 
-            user.setLastName(last);
-            user.setBook(book);
-            user.setEmail(email);
-            user.setDueDate(finalDate);
+            User user = new User(first, last, email, book, finalDate);
+//            user.setFirstName(first); 
+//            user.setLastName(last);
+//            user.setBook(book);
+//            user.setEmail(email);
+//            user.setDueDate(finalDate);
             UserDB.insert(user);
             url = "/thanksPage.jsp";
         }

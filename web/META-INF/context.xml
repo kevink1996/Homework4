@@ -2,7 +2,7 @@
 <Context path="/KKCGHomework4">
     <Resource name="jdbc/MySQLDS" auth="Container" 
         driverClassName="com.mysql.jdbc.Driver" 
-        url="jdbc:mysql://localhost:3306/chriskev" 
+        url="jdbc:mysql://localhost:3306/Belk" 
         username="root" password="mysqluser" 
         maxActive="100" maxIdle="30" maxWait="10000" 
         logAbandoned="true" removeAbandoned="true" 

@@ -9,6 +9,7 @@ public class User implements Serializable {
     private String lastName;
     private String book;
     private String dueDate;
+    private String overDue;
 
     public User() {
         email = "";
@@ -61,5 +62,11 @@ public class User implements Serializable {
     }
     public String getDueDate(){
         return dueDate;
+    }
+    public void setOverDue(String overDue){
+        this.overDue = overDue;
+    }
+    public String getOverDue(){
+        return overDue;
     }
 }

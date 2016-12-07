@@ -27,10 +27,15 @@ footer{
     text-align: center;
 }
 
-form label{
-    text-align: left;
+label{
+    float: left;
+    width: 10em;
 }
 
-form input{
-    
+.button{
+    margin-left: 14.5em;
+}
+
+#book{
+    width: 30%;
 }

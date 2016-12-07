@@ -17,7 +17,7 @@
     <input type="email" name="email" required>
     <br>
     <label>Book Title:</label>
-    <input type="text" name="book" required>
+    <input type="text" name="book" id="book" required>
     <br>
     <label></label>
     <input class="button" type="submit" value="Checkout">
