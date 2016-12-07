@@ -1,3 +1,4 @@
+//Copyright Chris Gerencser and Kevin Kowalsky
 package edu.elon.users;
 
 import java.sql.*;
