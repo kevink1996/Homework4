@@ -4,17 +4,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import edu.elon.data.User;
 
+
 public class UserDB {
 
     public static int insert(User user) {
         ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection;
-        connection = pool.getConnection();
+        Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO Belk.Library (`Checkout ID`, `First Name`, `Last Name`, `Email`, `Book Title`, `Due Date`, `Overdue`) "
-                + "VALUES (NULL, ?, ?, ?, ?, ?, 0)";
+                = "INSERT INTO chriskev.customers (firstname, lastname, email, book, due) "
+                + "VALUES (?, ?, ?, ?, ?)";
+        System.out.println(query);
+        
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getFirstName());
@@ -37,7 +39,7 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "UPDATE Library SET "
+        String query = "UPDATE chriskev.customers SET "
                 + "FirstName = ?, "
                 + "LastName = ? "
                 + "WHERE Email = ?";
@@ -62,8 +64,8 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "DELETE FROM Library "
-                + "WHERE Email = ?";
+        String query = "DELETE FROM chriskev.customers "
+                + "WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getEmail());
@@ -84,7 +86,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT Email FROM Library "
+        String query = "SELECT Email FROM chriskev.customers "
                 + "WHERE Email = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -107,7 +109,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT * FROM Belk.Library "
+        String query = "SELECT * FROM chriskev.customers "
                 + "WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -120,7 +122,7 @@ public class UserDB {
                 user.setLastName(rs.getString("lastName"));
                 user.setEmail(rs.getString("email"));
                 user.setBook(rs.getString("book"));
-                user.setDueDate(rs.getString("dueDate"));
+                user.setDueDate(rs.getString("due"));
             }
             return user;
         } catch (SQLException e) {
@@ -139,7 +141,7 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String query = "SELECT * FROM Belk.Library";
+        String query = "SELECT * FROM chriskev.customers";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -147,8 +149,8 @@ public class UserDB {
             while (rs.next())
             {
                 User user = new User();
-                user.setFirstName(rs.getString("firstName"));
-                user.setLastName(rs.getString("lastName"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setLastName(rs.getString("lastname"));
                 user.setEmail(rs.getString("email"));
                 user.setBook(rs.getString("book"));
                 user.setDueDate(rs.getString("dueDate"));

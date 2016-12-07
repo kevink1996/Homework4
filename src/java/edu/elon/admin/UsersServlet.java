@@ -54,7 +54,7 @@ public class UsersServlet extends HttpServlet {
 	    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 	    SimpleDateFormat simple = new SimpleDateFormat("MM-dd-yyyy");
 	    String finalDate = simple.format(sqlDate);
-            User user = new User(first, last, email, book, finalDate);
+            User user = new User(first, last, email, book, finalDate,cal);
 //            user.setFirstName(first); 
 //            user.setLastName(last);
 //            user.setBook(book);
@@ -74,7 +74,8 @@ public class UsersServlet extends HttpServlet {
             
             // get and set updated users
             ArrayList<User> users = UserDB.selectUsers();            
-            request.setAttribute("users", users);            
+            request.setAttribute("users", users); 
+            url = "/Manage.jsp";
         }
         
         getServletContext()

@@ -1,6 +1,10 @@
 package edu.elon.data;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class User implements Serializable {
 
@@ -10,6 +14,7 @@ public class User implements Serializable {
     private String book;
     private String dueDate;
     private String overDue;
+    private GregorianCalendar cal;
 
     public User() {
         email = "";
@@ -19,15 +24,21 @@ public class User implements Serializable {
         dueDate = "";
     }
 
-    public User(String firstName, String lastName, String email,String book,String dueDate) {
+    public User(String firstName, String lastName, String email,String book,String dueDate,GregorianCalendar cal) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.book = book; 
         this.dueDate = dueDate;
+        this.cal = cal;
         
     }
-
+    public GregorianCalendar getCal(){
+        return cal;
+    }
+    public void setCal(){
+        this.cal = cal;
+    }
     public String getEmail() {
         return email;
     }
@@ -67,6 +78,12 @@ public class User implements Serializable {
         this.overDue = overDue;
     }
     public String getOverDue(){
-        return overDue;
+        String finalDue = " ";
+            Calendar now = new GregorianCalendar();
+            if(now.compareTo(cal) ==0){
+                finalDue = "overdue";
+            }
+		overDue= finalDue;
+		return finalDue;
     }
 }
